@@ -1,25 +1,23 @@
 import React from "react";
 import "./Campus.css";
 import { useInView } from "react-intersection-observer";
-import onePlus from "../../Assets/Imgs/One_plus.png";
-import twoPlus from "../../Assets/Imgs/Two_plus.png";
-import threePlus from "../../Assets/Imgs/Three_plus.png";
-const dataCampus = [
-  {
-    img: onePlus,
-    item: "One plus (+) Programing foundation",
-  },
-  {
-    img: twoPlus,
-    item: "Two plus (++) Skill up to to get ready",
-  },
-  {
-    img: threePlus,
-    item: "Three plus (+++) How to become a senior",
-  },
-];
-
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
 function Campus() {
+  const [campusData, setCampusData] = useState([]);
+  const getData = async () => {
+    await axios
+      .get("https://api-devplus.herokuapp.com/api/receive")
+      .then((res) => {
+        setCampusData(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   const { ref: campusRef, inView: campusVisible } = useInView({
     triggerOnce: true,
   });
@@ -31,7 +29,7 @@ function Campus() {
             <h2>Our main campus</h2>
           </div>
           <div className="campus-row">
-            {dataCampus.map((title, index) => (
+            {campusData.map((title, index) => (
               <div
                 className={`campus-cover ${campusVisible ? "fade-up" : ""}`}
                 key={index}
