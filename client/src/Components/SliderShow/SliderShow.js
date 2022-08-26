@@ -1,11 +1,13 @@
 import "./SliderShow.css";
 import Slider from "react-slick";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-function SliderShow({ sliderOpen, sliderToggle }) {
+function SliderShow({ sliderOpen, sliderToggle, initSlide }) {
   const [sidebar, setSidebar] = useState({});
+  const ref = useRef();
+
   const getData = async () => {
     await axios
       .get("http://dev-page-server.herokuapp.com/api/admin/sidebar/info/")
@@ -17,8 +19,12 @@ function SliderShow({ sliderOpen, sliderToggle }) {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    ref.current.slickGoTo(initSlide);
+  }, [initSlide]);
+
   const settings = {
-    infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     pauseOnHover: true,
@@ -29,18 +35,18 @@ function SliderShow({ sliderOpen, sliderToggle }) {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
         },
       },
     ],
   };
   return (
-    <div
-      className={sliderOpen ? "slider" : "slider off"}
-      onClick={sliderToggle}
-    >
+    <div className={sliderOpen ? "slider" : "slider off"}>
+      <div
+        className="slider-back-quit"
+        onClick={() => sliderToggle("off")}
+      ></div>
       <div className="slider-container">
-        <Slider {...settings}>
+        <Slider ref={ref} {...settings}>
           {Array.isArray(sidebar.images) ? (
             sidebar.images.map((item, index) => (
               <div className="slider-card" key={index}>

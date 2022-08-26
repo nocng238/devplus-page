@@ -11,6 +11,7 @@ const Navbar = () => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const [sliderOpen, setSliderOpen] = useState(false);
+  const [initSlider, setInitSlider] = useState();
   const menuToggle = () => {
     const windowWidth = window.innerWidth;
     if (windowWidth > 1000) {
@@ -21,12 +22,13 @@ const Navbar = () => {
     setSideBarOpen(!sideBarOpen);
   };
 
-  const sliderToggle = () => {
+  const sliderToggle = (i) => {
+    if (Number.isInteger(i)) {
+      setInitSlider(i);
+    }
     setSliderOpen(!sliderOpen);
   };
-  useEffect(() => {
-    console.log(sliderOpen);
-  }, [sliderOpen]);
+  useEffect(() => {}, [sliderOpen]);
   // const windowWidth = window.innerWidth;
   // console.log(windowWidth)
   return (
@@ -99,6 +101,7 @@ const Navbar = () => {
       <SliderShow
         sliderOpen={sliderOpen}
         sliderToggle={sliderToggle}
+        initSlide={initSlider}
       ></SliderShow>
     </header>
   );

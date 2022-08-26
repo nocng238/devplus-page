@@ -37,7 +37,11 @@ const Sidebar = ({ sideBarOpen, sideBarToggle, sliderToggle }) => {
       <div className="sidebar-images">
         {sidebar.images?.map((image, index) => {
           return (
-            <div className="image" key={index} onClick={sliderToggle}>
+            <div
+              className="image"
+              key={index}
+              onClick={() => sliderToggle(index)}
+            >
               <img src={image.url} alt="" />
             </div>
           );
