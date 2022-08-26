@@ -38,6 +38,7 @@
 .rv-content .author-desc {
   position: relative;
   min-height: 440px;
+  width: 100%;
   padding: 70px 15px;
   background-color: #f3f8f9;
   border-radius: 5px 5px 5px 5px;
@@ -67,6 +68,7 @@
 }
 .card .rv-content .rv-details {
   padding-top: 45px;
+  text-align: center;
 }
 .card .rv-content .rv-name {
   font-family: "Rubik", sans-serif;

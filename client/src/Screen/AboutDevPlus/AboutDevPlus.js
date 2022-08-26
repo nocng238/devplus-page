@@ -6,6 +6,7 @@ function AboutDevPlus() {
     <>
       <Navbar />
       <div className="about-dev-container">About DevPlus</div>
+      <div className="side-bar-slider"></div>
       <Footer />
     </>
   );
