@@ -33,7 +33,7 @@ function Review() {
   const [reviewnData, setReviewData] = useState([]);
   const getData = async () => {
     await axios
-      .get("http://dev-page-server.herokuapp.com/api/admin/review/infoAll")
+      .get("/api/admin/review/infoAll")
       .then((res) => {
         setReviewData(res.data);
       })

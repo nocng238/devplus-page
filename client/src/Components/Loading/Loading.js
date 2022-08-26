@@ -3,7 +3,10 @@ const Loading = () => {
   return (
     <div className="container-loader">
       <div className="loader">
-        <img src="https://devplus.edu.vn/assets/images/devplus/logo_loading.png" />
+        <img
+          alt=""
+          src="https://devplus.edu.vn/assets/images/devplus/logo_loading.png"
+        />
       </div>
     </div>
   );

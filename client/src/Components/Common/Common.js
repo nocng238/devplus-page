@@ -23,7 +23,7 @@ function Common() {
   const [commonData, setCommonData] = useState({});
   const getData = async () => {
     await axios
-      .get("http://dev-page-server.herokuapp.com/api/admin/common/infoAll")
+      .get("/api/admin/common/infoAll")
       .then((res) => {
         setCommonData(res.data);
       })
@@ -93,7 +93,7 @@ function Common() {
           <Iframe
             className="mfp-iframe"
             frameBorder={0}
-            url="https://www.youtube.com/embed/mUjhiT0zSKI"
+            url={commonData.video}
           />
         </div>
       ) : (

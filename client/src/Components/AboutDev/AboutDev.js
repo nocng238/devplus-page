@@ -6,7 +6,7 @@ const AboutDev = () => {
   const [aboutData, setAboutData] = useState({});
   const getData = async () => {
     await axios
-      .get("http://dev-page-server.herokuapp.com/api/admin/about/info")
+      .get("api/admin/about/info")
       .then((res) => {
         setAboutData(res.data);
       })
