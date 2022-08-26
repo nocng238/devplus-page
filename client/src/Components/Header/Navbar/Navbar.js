@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Navbar.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import SliderShow from "../../SliderShow/SliderShow";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState(false);
-
+  const [sliderOpen, setSliderOpen] = useState(false);
   const menuToggle = () => {
     const windowWidth = window.innerWidth;
     if (windowWidth > 1000) {
@@ -17,8 +18,15 @@ const Navbar = () => {
     } else setMenuOpen(!menuOpen);
   };
   const submenuToggle = () => {
-    setSubmenuOpen(!submenuOpen);
+    setSideBarOpen(!sideBarOpen);
   };
+
+  const sliderToggle = () => {
+    setSliderOpen(!sliderOpen);
+  };
+  useEffect(() => {
+    console.log(sliderOpen);
+  }, [sliderOpen]);
   // const windowWidth = window.innerWidth;
   // console.log(windowWidth)
   return (
@@ -83,7 +91,15 @@ const Navbar = () => {
           <div className="navbar-icon"></div>
         </div>
       </nav>
-      <Sidebar sideBarOpen={sideBarOpen} sideBarToggle={menuToggle} />
+      <Sidebar
+        sideBarOpen={sideBarOpen}
+        sideBarToggle={menuToggle}
+        sliderToggle={sliderToggle}
+      />
+      <SliderShow
+        sliderOpen={sliderOpen}
+        sliderToggle={sliderToggle}
+      ></SliderShow>
     </header>
   );
 };

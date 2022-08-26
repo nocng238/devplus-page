@@ -243,7 +243,7 @@
   left: 0;
   background: rgba(0, 0, 0, 0.8);
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 
 .concern .popup-video .mfp-iframe {
@@ -268,9 +268,9 @@
 .concern .popup-video .close-span:hover {
   opacity: 1;
 }
-@media (max-width: 900px) {
-  .concern .popup-video iframe {
-    width: 90%;
+@media (max-width: 910px) {
+  .concern .popup-video .mfp-iframe {
+    width: 95%;
   }
 }
 @media(max-width:739px){

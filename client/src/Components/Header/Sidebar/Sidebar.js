@@ -3,8 +3,10 @@ import { BsFacebook } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
 import "./Sidebar.css";
 import axios from "axios";
-
-const Sidebar = ({ sideBarOpen, sideBarToggle }) => {
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+const Sidebar = ({ sideBarOpen, sideBarToggle, sliderToggle }) => {
   const [sidebar, setSidebar] = useState({});
   const getData = async () => {
     await axios
@@ -35,7 +37,7 @@ const Sidebar = ({ sideBarOpen, sideBarToggle }) => {
       <div className="sidebar-images">
         {sidebar.images?.map((image, index) => {
           return (
-            <div className="image" key={index}>
+            <div className="image" key={index} onClick={sliderToggle}>
               <img src={image.url} alt="" />
             </div>
           );
