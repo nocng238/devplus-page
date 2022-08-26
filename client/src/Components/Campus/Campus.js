@@ -8,7 +8,7 @@ function Campus() {
   const [campusData, setCampusData] = useState([]);
   const getData = async () => {
     await axios
-      .get("https://dev-page-server.herokuapp.com/api/admin/campus/infoAll")
+      .get("/api/admin/campus/infoAll")
       .then((res) => {
         setCampusData(res.data);
       })

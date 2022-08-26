@@ -7,7 +7,7 @@ const Receive = () => {
   const [receiveData, setReceiveData] = useState([]);
   const getData = async () => {
     await axios
-      .get("https://dev-page-server.herokuapp.com/api/admin/receive/infoAll")
+      .get("/api/admin/receive/infoAll")
       .then((res) => {
         setReceiveData(res.data);
       })

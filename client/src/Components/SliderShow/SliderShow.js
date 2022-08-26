@@ -10,7 +10,7 @@ function SliderShow({ sliderOpen, sliderToggle, initSlide }) {
 
   const getData = async () => {
     await axios
-      .get("http://dev-page-server.herokuapp.com/api/admin/sidebar/info/")
+      .get("/api/admin/sidebar/info/")
       .then((res) => {
         setSidebar(res.data);
       })

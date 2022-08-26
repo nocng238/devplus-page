@@ -3,14 +3,13 @@ import { BsFacebook } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
 import "./Sidebar.css";
 import axios from "axios";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const Sidebar = ({ sideBarOpen, sideBarToggle, sliderToggle }) => {
   const [sidebar, setSidebar] = useState({});
   const getData = async () => {
     await axios
-      .get("http://dev-page-server.herokuapp.com/api/admin/sidebar/info")
+      .get("/api/admin/sidebar/info")
       .then((res) => {
         setSidebar(res.data);
       })

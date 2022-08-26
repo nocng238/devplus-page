@@ -7,7 +7,7 @@ const Banner = () => {
   const [bannerData, setBannerData] = useState({});
   const getData = async () => {
     await axios
-      .get("http://dev-page-server.herokuapp.com/api/admin/banner/info")
+      .get("/api/admin/banner/info")
       .then((res) => {
         setBannerData(res.data);
       })
