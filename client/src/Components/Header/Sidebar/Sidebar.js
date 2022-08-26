@@ -8,7 +8,7 @@ const Sidebar = ({ sideBarOpen, sideBarToggle }) => {
   const [sidebar, setSidebar] = useState({});
   const getData = async () => {
     await axios
-      .get("http://localhost:8000/api/admin/sidebar/info")
+      .get("http://dev-page-server.herokuapp.com/api/admin/sidebar/info")
       .then((res) => {
         setSidebar(res.data);
       })

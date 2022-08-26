@@ -1,7 +1,21 @@
 import React from "react";
 import "./Banner.css";
 import { useInView } from "react-intersection-observer";
+import { useState, useEffect } from "react";
+import axios from "axios";
 const Banner = () => {
+  const [bannerData, setBannerData] = useState({});
+  const getData = async () => {
+    await axios
+      .get("http://dev-page-server.herokuapp.com/api/admin/banner/info")
+      .then((res) => {
+        setBannerData(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   const { ref: bannerRef, inView: bannerVisible } = useInView({
     triggerOnce: true,
   });
@@ -9,20 +23,14 @@ const Banner = () => {
     <section ref={bannerRef} id="banner">
       <div className="container">
         <div className="banner-img">
-          <img
-            src={require("../../Assets/Imgs/Devplus_missions.webp")}
-            alt=""
-          />
+          <img src={bannerData.image} alt="" />
         </div>
         <div className="banner-body">
           <h1 className={`${bannerVisible ? "fade-left" : ""}`}>
-            Devplus Will Support The Early Stage Developers Go The Right Career
-            Path
+            {bannerData.title}
           </h1>
           <p className={`${bannerVisible ? "fade-right" : ""}`}>
-            Devplus is not a training center, it's battle campus for you to
-            level up your skillsets and ready to onboard any projects in our
-            “kindest” companies listing
+            {bannerData.detail}
           </p>
           <a href="# ">
             <button className={`banner-btn ${bannerVisible ? "fade-up" : ""}`}>

@@ -6,7 +6,7 @@ const Admission = () => {
   const [admissionData, setAdminssionData] = useState({});
   const getData = async () => {
     await axios
-      .get("http://localhost:8000/api/admin/admission/info")
+      .get("http://dev-page-server.herokuapp.com/api/admin/admission/info")
       .then((res) => {
         setAdminssionData(res.data);
       })
