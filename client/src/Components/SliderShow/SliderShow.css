@@ -11,6 +11,14 @@
 .slider.off {
   display: none;
 }
+
+.slider-back-quit {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
 .slider-container {
   width: 700px;
 }
